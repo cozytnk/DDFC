@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DDNC</title>
+
+  <script src="./face-api.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+
+    <button>button</button>
+    <img crossorigin='anonymous' src="https://1.bp.blogspot.com/-wOcgmWIGYTM/XnmrUkdzXXI/AAAAAAABX4o/FXqS6bSkvQgPGSFWmrflkDaU-K-fIYAwACNcBGAsYHQ/s1600/jitaku_taiki__relax_woman.png">
+    <!-- <img crossorigin='anonymous' src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Mona_Lisa_detail_face.jpg/420px-Mona_Lisa_detail_face.jpg"> -->
+
+  <script>
+    document.querySelector('button').onclick = async () => {
+      console.log(`@click`)
+      const img = document.querySelector('img')
+
+      console.log(`loading...`)
+      await faceapi.nets.tinyFaceDetector.load('./models/')
+      await faceapi.nets.faceLandmark68Net.load('./models/')
+
+      console.log(`detecting...`)
+      // const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
+      const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks()
+
+      console.log(`detected.`)
+      console.log(detections)
+    }
+  </script>
+</body>
