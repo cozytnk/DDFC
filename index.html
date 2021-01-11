@@ -5,31 +5,61 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>DDNC</title>
 
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
   <script src="./face-api.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 
 <body>
-  <div id="app">
+  <div class="root" id="app">
 
-    <button>button</button>
-    <img crossorigin='anonymous' src="https://1.bp.blogspot.com/-wOcgmWIGYTM/XnmrUkdzXXI/AAAAAAABX4o/FXqS6bSkvQgPGSFWmrflkDaU-K-fIYAwACNcBGAsYHQ/s1600/jitaku_taiki__relax_woman.png">
-    <!-- <img crossorigin='anonymous' src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Mona_Lisa_detail_face.jpg/420px-Mona_Lisa_detail_face.jpg"> -->
+    <div class="header">
+      <span class="title">Doki Doki Face</span>
+      <button id="start">start</button>
+      <button id="stop">stop</button>
+    </div>
 
+    <div class="main">
+      <canvas id="canvas-img" width="500" height="500"></canvas>
+      <canvas id="canvas-overlay" width="500" height="500"></canvas>
+    </div>
+
+    <div class="imgs">
+      <label>
+        <input type="file" accept="image/*" @change="addImg">
+        <div>add an image file</div>
+      </label>
+      <img v-for="img in imgs" :key="img" :src="img" @click="selectImg(img)">
+    </div>
+
+    <div class="loading" v-show="loading">
+      <span>loading...</span>
+    </div>
+
+  </div>
+  <script src="./effects.js"></script>
+  <script src="./index.js"></script>
   <script>
-    document.querySelector('button').onclick = async () => {
-      console.log(`@click`)
-      const img = document.querySelector('img')
-
-      console.log(`loading...`)
-      await faceapi.nets.tinyFaceDetector.load('./models/')
-      await faceapi.nets.faceLandmark68Net.load('./models/')
-
-      console.log(`detecting...`)
-      // const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
-      const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks()
-
-      console.log(`detected.`)
-      console.log(detections)
+    document.querySelector('button').onclick = (e) => {
+      // effects.reset()
+      effects.stop()
+      counters.start++
+      console.log(`counters.start: ${counters.start}`)
+      const detections = app.detections
+      if (detections.length === 0) {
+        alert(`could not detect any faces...\ntry another image !`)
+        effects.negaposi()
+      } else {
+        effects.bbb(detections)
+        // effects.white(detections)
+      }
+    }
+    document.querySelector('#stop').onclick = () => {
+      // effects.reset()
+      effects.stop()
     }
   </script>
 </body>

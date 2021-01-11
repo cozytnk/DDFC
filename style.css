@@ -1,0 +1,155 @@
+* {
+  box-sizing: border-box;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+head, body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+  background-color: lavenderblush;
+}
+
+.root {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto minmax(0, 100%) 200px;
+}
+
+.header {
+  padding: 6px 24px;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 6px;
+}
+.header > .title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-right: auto;
+}
+.header > button {
+  width: 140px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid black;
+  background-color: #eee;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  position: relative;
+}
+.main > canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* transform: translate(50%, 0); */
+}
+
+.imgs {
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  padding: 6px 24px;
+  display: flex;
+  gap: 24px;
+}
+.imgs > img {
+  /* width: 200px; */
+  height: 100%;
+  object-fit: contain;
+  cursor: pointer;
+}
+.imgs > label {
+  align-self: center;
+  --stroke-color: #222;
+  --stroke-weight: 1px;
+}
+.imgs > label > input[type=file] {
+  display: none;
+}
+.imgs > label > div {
+  width: 160px;
+  height: 160px;
+  background-color: lightpink;
+  border-radius: 20px;
+  border: 2px solid #ddd;
+  color: #fff;
+  font-size: large;
+  font-weight: bold;
+  /* text-stroke: 1px var(--stroke-color); */
+  text-shadow:
+    calc( 1*var(--stroke-weight)) calc( 1*var(--stroke-weight)) 1px var(--stroke-color),
+    calc(-1*var(--stroke-weight)) calc( 1*var(--stroke-weight)) 1px var(--stroke-color),
+    calc( 1*var(--stroke-weight)) calc(-1*var(--stroke-weight)) 1px var(--stroke-color),
+    calc(-1*var(--stroke-weight)) calc(-1*var(--stroke-weight)) 1px var(--stroke-color),
+    calc( 1*var(--stroke-weight)) 0px                           1px var(--stroke-color),
+    0px                           calc( 1*var(--stroke-weight)) 1px var(--stroke-color),
+    calc(-1*var(--stroke-weight)) 0px                           1px var(--stroke-color),
+    0px                           calc(-1*var(--stroke-weight)) 1px var(--stroke-color);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: gray;
+  opacity: 0.6;
+  color: white;
+  font-size: 48px;
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* effects */
+@font-face {
+  /* https://material.animehack.jp/font_gcomichorror.html */
+  font-family: "g_comic";
+  src: url("./fonts/g_comichorrorR_freeR.ttf") format("truetype");
+}
+
+/* negaposi */
+body.negaposi {
+  background-color: black;
+  filter: invert(100%);
+}
+body.negaposi * {
+  font-family: 'g_comic';
+}
+body.negaposi #app{
+  filter: blur(100px);
+  transition: filter 600s linear;
+}
+
+/* rotation */
+body.rotation {
+  transform: rotate(90deg);
+  transition: transform 6000s linear;
+}
+body.rotation canvas {
+  transform: rotate(-90deg);
+  transition: transform 6000s linear;
+}
+
+/* white */
+body.white {
+  background-color: #fff;
+  filter: grayscale(100%) brightness(2.5);
+}
