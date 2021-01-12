@@ -40,7 +40,6 @@
   <script src="./effects.js"></script>
   <script src="./index.js"></script>
   <script>
-    let horrorfontFlg = false
     document.querySelector('button').onclick = (e) => {
       // effects.reset()
       effects.stop()
@@ -53,21 +52,20 @@
       } else {
         effects.bbb()
         // effects.white()
-        if (horrorfontFlg) effects.horrorfont()
       }
     }
     let confirmFlg = false
-    document.querySelector('#stop').onclick = () => {
+    document.querySelector('#stop').onclick = async () => {
       if (effects.bbbing()) {
         if (!confirmFlg) counters.stop++
         if (confirmFlg || counters.stop % 10 === 0) {
           confirmFlg = true
           if(confirm(`とめちゃうの？`)) {
-            if(confirm(`とめちゃゔゔゔゔゔのの？`)) {
-              effects.stop()
-              confirmFlg = false
-              horrorfontFlg = true
-            }
+            await ((ms) => new Promise((resolve) => setTimeout(resolve, ms))) (1500)
+            confirm(`とめちゃゔゔゔゔゔのの？`)
+            effects.stop()
+            effects.mask()
+            confirmFlg = false
           }
         } else {
           effects.stop()
