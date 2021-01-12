@@ -8,6 +8,8 @@ const effects = {
     return { canvas, ctx }
   },
 
+  horrorfont: () => document.body.classList.add('horror-font'),
+
   negaposi: () => document.body.classList.add('negaposi'),
 
   rotation: () => document.body.classList.add('rotation'),
@@ -78,7 +80,7 @@ const effects = {
 
     effects.timer = setInterval(() => {
       const rate = app.rate // NOTE: resizeを反映させるため、ここでappから参照してくること。
-      counters.start++
+      counters.frame++
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       detections.forEach(detection => {
         const positions = detection.landmarks.positions
@@ -104,11 +106,13 @@ const effects = {
       })
     }, 20)
   },
+  bbbing: () => Boolean(effects.timer),
 
   stop: () => {
     const { canvas, ctx } = effects.overlayCanvas()
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     clearInterval(effects.timer)
+    effects.timer = null
   },
 
   reset: () => {

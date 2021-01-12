@@ -17,7 +17,7 @@
   <div class="root" id="app">
 
     <div class="header">
-      <span class="title">Doki Doki Face</span>
+      <span class="title">Doki Doki Face Changer</span>
       <button id="start">start</button>
       <button id="stop">stop</button>
     </div>
@@ -40,6 +40,7 @@
   <script src="./effects.js"></script>
   <script src="./index.js"></script>
   <script>
+    let horrorfontFlg = false
     document.querySelector('button').onclick = (e) => {
       // effects.reset()
       effects.stop()
@@ -52,12 +53,28 @@
       } else {
         effects.bbb()
         // effects.white()
+        if (horrorfontFlg) effects.horrorfont()
       }
     }
+    let confirmFlg = false
     document.querySelector('#stop').onclick = () => {
-      counters.stop++
+      if (effects.bbbing()) {
+        if (!confirmFlg) counters.stop++
+        if (confirmFlg || counters.stop % 10 === 0) {
+          confirmFlg = true
+          if(confirm(`とめちゃうの？`)) {
+            if(confirm(`とめちゃゔゔゔゔゔのの？`)) {
+              effects.stop()
+              confirmFlg = false
+              horrorfontFlg = true
+            }
+          }
+        } else {
+          effects.stop()
+        }
+      }
       // effects.reset()
-      effects.stop()
+      console.log(`counters.stop: ${counters.stop}`)
     }
   </script>
 </body>

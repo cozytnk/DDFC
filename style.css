@@ -125,6 +125,10 @@ head, body {
   src: url("./fonts/g_comichorrorR_freeR.ttf") format("truetype");
 }
 
+body.horror-font * {
+  font-family: 'g_comic';
+}
+
 /* negaposi */
 body.negaposi {
   background-color: black;
