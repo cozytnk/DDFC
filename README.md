@@ -12,5 +12,3 @@ DDLCの目と口がヴヴヴヴってなるやつ。＋α（ネガポジ反転�
   - 他：[ほんとうに怖い日本語ホラーフォント/血文字フォント30選](https://goworkship.com/magazine/blood-japanese-font/)
 - [かわいいフリー素材集 いらすとや](https://www.irasutoya.com/)
 
-## めも
-- bug: ヴヴヴヴ時にリサイズするとずれる

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>DDNC</title>
+  <title>DDFC</title>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
   <script src="./face-api.min.js"></script>
@@ -22,17 +22,14 @@
       <button id="stop">stop</button>
     </div>
 
-    <div class="main">
-      <canvas id="canvas-img" width="500" height="500"></canvas>
-      <canvas id="canvas-overlay" width="500" height="500"></canvas>
-    </div>
+    <canvases class="main" :img="img" :rate.sync="rate"></canvases>
 
     <div class="imgs">
       <label>
-        <input type="file" accept="image/*" @change="addImg">
+        <input type="file" accept="image/*" @change="addSrc">
         <div>add an image file</div>
       </label>
-      <img v-for="img in imgs" :key="img" :src="img" @click="selectImg(img)">
+      <img v-for="src in srces" :key="img" :src="src" @click="selectSrc(src)">
     </div>
 
     <div class="loading" v-show="loading">
@@ -53,11 +50,12 @@
         alert(`could not detect any faces...\ntry another image !`)
         effects.negaposi()
       } else {
-        effects.bbb(detections)
-        // effects.white(detections)
+        effects.bbb()
+        // effects.white()
       }
     }
     document.querySelector('#stop').onclick = () => {
+      counters.stop++
       // effects.reset()
       effects.stop()
     }
