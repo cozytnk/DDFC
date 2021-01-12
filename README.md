@@ -1,8 +1,8 @@
-# DDNC
+# DDFC
 
-Doki Doki Natsuki Countenance
+Doki Doki Face Changer
 
-目と口がヴヴヴヴってなるやつ。＋α（ネガポジ反転、背景傾き）
+DDLCの目と口がヴヴヴヴってなるやつ。＋α（ネガポジ反転、背景傾き）
 
 ## ライブラリ・素材等
 - [face-api.js](https://github.com/justadudewhohacks/face-api.js)
