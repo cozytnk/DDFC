@@ -51,17 +51,16 @@
         effects.negaposi()
       } else {
         effects.bbb()
-        // effects.white()
       }
     }
     let confirmFlg = false
     document.querySelector('#stop').onclick = async () => {
       if (effects.bbbing()) {
         if (!confirmFlg) counters.stop++
-        if (confirmFlg || counters.stop % 10 === 0) {
+        if (confirmFlg || counters.stop % 5 === 0) {
           confirmFlg = true
           if(confirm(`とめちゃうの？`)) {
-            await ((ms) => new Promise((resolve) => setTimeout(resolve, ms))) (1500)
+            await ((ms) => new Promise((resolve) => setTimeout(resolve, ms))) (1000)
             confirm(`とめちゃゔゔゔゔゔのの？`)
             effects.stop()
             effects.mask()

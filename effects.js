@@ -14,12 +14,7 @@ const effects = {
 
   rotation: () => document.body.classList.add('rotation'),
 
-  white: () => {
-    effects.reset()
-    effects.stop()
-    document.body.classList.add('white')
-    effects.mask()
-  },
+  white: () => document.body.classList.add('white'),
 
   landmarks: () => { // for debug
     const detections = app.detections
