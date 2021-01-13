@@ -10,7 +10,24 @@ const effects = {
 
   horrorfont: () => document.body.classList.add('horror-font'),
 
-  negaposi: () => document.body.classList.add('negaposi'),
+  // negaposi: () => document.body.classList.add('negaposi'),
+  negaposi2: () => {
+    setTimeout(() => {
+      document.body.classList.add('negaposi2')
+    }, 1200)
+  },
+  negaposi: async () => {
+    await ((ms) => new Promise(resolve => setTimeout(resolve, ms))) (1200)
+    let cnt = 0
+    const timer = setInterval(() => {
+      document.body.classList.toggle('negaposi')
+      if (++cnt > 4) {
+        document.body.classList.remove('negaposi')
+        document.body.classList.add('after-negaposi')
+        clearInterval(timer)
+      }
+    }, 60)
+  },
 
   rotation: () => document.body.classList.add('rotation'),
 
@@ -19,15 +36,13 @@ const effects = {
   landmarks: () => { // for debug
     const detections = app.detections
     const { canvas, ctx } = effects.overlayCanvas()
-    setTimeout(() => {
-      counters.start++
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-      detections.forEach(detection => {
-        ctx.beginPath()
-        detection.landmarks.positions.forEach(pos => ctx.rect(pos.x, pos.y, 4, 4))
-        ctx.fillStyle = 'black'
-        ctx.fill()
-      })
+    const rate = app.rate
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    detections.forEach(detection => {
+      ctx.beginPath()
+      detection.landmarks.positions.forEach(pos => ctx.rect(pos.x * rate, pos.y * rate, 4, 4))
+      ctx.fillStyle = 'black'
+      ctx.fill()
     })
   },
 

@@ -2,7 +2,7 @@
 
 Doki Doki Face Changer
 
-DDLCの目と口がヴヴヴヴってなるやつ。＋α（ネガポジ反転、背景傾き）
+DDLCの目と口がヴヴヴヴってなるやつ。＋α（ネガポジ反転、背景傾き、目口塗り潰し、ラテン特殊文字）
 
 ## ライブラリ・素材等
 - [face-api.js](https://github.com/justadudewhohacks/face-api.js)

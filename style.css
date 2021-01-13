@@ -15,7 +15,7 @@ head, body {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-rows: auto minmax(0, 100%) 200px;
+  grid-template-rows: 84px minmax(0, 100%) 200px;
 }
 
 .header {
@@ -119,27 +119,35 @@ head, body {
 
 
 /* effects */
-@font-face {
-  /* https://material.animehack.jp/font_gcomichorror.html */
+
+/* @font-face {
   font-family: "g_comic";
   src: url("./fonts/g_comichorrorR_freeR.ttf") format("truetype");
-}
+} */
 
 body.horror-font * {
   font-family: 'g_comic';
 }
-
 /* negaposi */
 body.negaposi {
   background-color: black;
   filter: invert(100%);
 }
-body.negaposi * {
-  font-family: 'g_comic';
-}
 body.negaposi #app{
   filter: blur(100px);
-  transition: filter 600s linear;
+  transition: filter 60s linear;
+}
+body.after-negaposi canvas,
+body.after-negaposi img {
+  filter: grayscale(100%) blur(20px);
+  border: 10px solid black;
+}
+
+/* negaposi2 */
+body.negaposi2 {
+  background-color: black;
+  filter: invert(100%) blur(5px);
+  transition: filter 6s ease;
 }
 
 /* rotation */
@@ -156,4 +164,8 @@ body.rotation canvas {
 body.white {
   background-color: #fff;
   filter: grayscale(100%) brightness(2.5);
+}
+body.white img {
+  filter: blur(6px);
+  border: 2px solid black;
 }

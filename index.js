@@ -19,6 +19,30 @@ const readDataURL = (file) => {
     reader.readAsDataURL(file)
   })
 }
+const randomStr = (n) => {
+  const randi = high => Math.floor(Math.random() * high)
+  const chars = `ⱯɐⱭɑɒẚʙↃↄꜾꜿꝹꝺȸƎǝƏəƐɛɘɜɞʚɤʩꝻꝼℲⅎɡᵹɢʛᵷƔɣƢƣʜǶƕɦⱵⱶɧɪƖɩᵼʞʟɮꞀꞁƛʎɴɶƆɔɷȢȣɸⱷȹK‘ĸƦʀɹɺɻɿʁꝚꝛꝜꝝẞßƩʃƪʅʆſẛʇɥʮʯƜɯɰƱʊɅʌʍƍƷʒƸƹʓȜȝÞþǷƿƻƧƨƼƽƄƅɁɂʔʕʡʢʖǀǁǂǃʗʘʬʭꜲꜳÆæꜴꜵꜶꜷꜸꜹꜺꜻꜼꜽʣʥʤỺỻʪʫŒœꝎꝏᵺƾʦʨʧꜨꜩᵫ
+  ÁáÀàĂăẮắẰằẴẵẲẳÂâẤấẦầẪẫẨẩǍǎÅåǺǻÄäǞǟÃãȦȧǠǡĄąĄ̈ą̈ĀāẢảȀȁȂȃẠạẶặẬậḀḁȺⱥᶏǼǽǢǣᶐḂḃḄḅḆḇɃƀᵬᶀƁɓƂƃĆćĈĉČčĊċÇçḈḉȻȼƇƈɕĎďḊḋḐḑḌḍḒḓḎḏĐđÐðᵭᶁƉɖƊɗᶑƋƌȡÉéÈèĔĕÊêẾếỀềỄễỂểĚěËëẼẽĖėȨȩḜḝĘęĒēḖḗḔḕẺẻȄȅȆȇẸẹỆệḘḙḚḛɆɇᶒᶕɚᶓᶔɝḞḟᵮᶂƑƒǴǵĞğĜĝǦǧĠġĢģḠḡǤǥᶃƓɠĤĥȞȟḦḧḢḣḨḩḤḥḪḫH̱ẖĦħⱧⱨÍíÌìĬĭÎîǏǐÏïḮḯĨĩİiĮįĪīỈỉȈȉȊȋỊịḬḭIıƗɨᵻᶖĴĵJ̌ǰȷɈɉʝɟʄḰḱǨǩĶķḲḳḴḵꝄꝅꝂꝃꝀꝁᶄƘƙⱩⱪĹĺĽľĻļḶḷḸḹḼḽḺḻŁłŁ̣ł̣ĿŀȽƚⱠⱡⱢɫꝈꝉꝆꝇɬᶅɭȴḾḿṀṁṂṃᵯᶆɱŃńǸǹN̂n̂ŇňN̈n̈N̄n̄ÑñṄṅŅņṆṇṊṋṈṉᵰƝɲȠƞŊŋᶇɳȵÓóÒòŎŏÔôỐốỒồỖỗỔổǑǒÖöȪȫŐőÕõṌṍṎṏȬȭȮȯȰȱØøǾǿǪǫǬǭŌōṒṓṐṑỎỏȌȍȎȏƠơỚớỜờỠỡỞởỢợỌọỘộƟɵꝊꝋꝌꝍṔṕṖṗⱣᵽꝐꝑᶈƤƥꝒꝓꝔꝕP̃p̃ʠꝘꝙɊɋQ̊q̊Q̧q̧ŔŕŘřṘṙŖŗȐȑȒȓṚṛṜṝṞṟɌɍᵲᶉɼꞂꞃⱤɽɾᵳŚśṤṥŜŝŠšṦṧṠṡŞşṢṣṨṩȘșᵴᶊʂȿS̩s̩ꞄꞅᶋᶘŤťT̈ẗṪṫŢţṬṭȚțṰṱṮṯŦŧȾⱦᵵƫƬƭƮʈȶÚúÙùŬŭÛûǓǔŮůÜüǗǘǛǜǙǚǕǖŰűŨũṸṹŲųŪūṺṻỦủȔȕȖȗƯưỨứỪừỮữỬửỰựỤụṲṳṶṷṴṵɄʉᵾᶙᵿṼṽṾṿᶌƲʋⱴẂẃẀẁŴŵW̊ẘẄẅẆẇẈẉꝠꝡẌẍẊẋᶍÝýỲỳŶŷY̊ẙŸÿỸỹẎẏȲȳỶỷỴỵʏɎɏƳƴŹźẐẑŽžŻżẒẓẔẕƵƶᵶᶎȤȥʐʑɀⱫⱬǮǯᶚƺꝢꝣꝤꝥꝦꝧ
+  ÁĆÉǴÍḰĹḾŃÓṔŔŚÚẂÝŹ
+  ÀÈÌǸÒÙẀỲ
+  ÂĈÊĜĤÎĴN̂ÔŜÛŴŶẐ
+  ÄËḦÏÖT̈ÜẄẌŸ
+  ÅŮW̊Y̊
+  ǍČĎĚǦȞǏǨĽŇǑŘŠŤǓŽ
+  ÃẼĨÑÕŨṼỸ
+  ÇḐȨĢḨĶĻŅŖŞŢ
+  ȘȚ
+  ĂĔĞĬŎŬ
+  ĀĒḠĪN̄ŌŪȲ
+  ĄĘĮǪŲ
+  ŐŰ
+  ȦḂĊḊĖḞĠḢİĿṀṄȮṖṘṠṪẆẊẎŻ
+  ɃĐǤĦƗɈŁØⱣɌŦɄɎƵ
+  ƠƯ`.replace(/(\n| )/, '')
+  let s = ''
+  for (let i = 0; i < n; i++) s += chars[randi(chars.length-1)]
+  return s
+}
 
 
 // REF: https://note.com/npaka/n/nc9c244b11089
@@ -93,11 +117,12 @@ const app = new Vue({
       './img/lena.gif',
       './img/Mona_Lisa_face.jpg',
       './img/jitaku_taiki__relax_woman.png',
-      './img/pose_pien_uruuru_woman.png',
+      './img/yumekawa_angel_tenshi.png',
     ],
     img: null,
     detections: null,
     rate: 1,
+    mojibake: false,
   },
   async mounted () {
     this.loading = true
@@ -116,12 +141,16 @@ const app = new Vue({
 
       effects.reset()
       effects.stop()
+      this.mojibake = false
 
       this.img = await loadImg(src)
       this.detections = await detect(this.img)
 
       this.loading = false
-      if (counters.select % 5 === 0) effects.rotation()
+      if (counters.select % 5 === 0) {
+        effects.rotation()
+        // app.mojibake = true
+      }
 
     },
     async addSrc (e) {

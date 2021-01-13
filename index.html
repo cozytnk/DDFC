@@ -17,9 +17,12 @@
   <div class="root" id="app">
 
     <div class="header">
-      <span class="title">Doki Doki Face Changer</span>
-      <button id="start">start</button>
-      <button id="stop">stop</button>
+      <!-- <span class="title">Doki Doki Face Changer</span> -->
+      <!-- <button id="start">start</button> -->
+      <!-- <button id="stop">stop</button> -->
+      <span class="title">{{ !mojibake ? 'Doki Doki Face Changer' : randomStr(22) }}</span>
+      <button id="start">{{ !mojibake ? 'start' : randomStr(5) }}</button>
+      <button id="stop">{{ !mojibake ? 'stop' : randomStr(4) }}</button>
     </div>
 
     <canvases class="main" :img="img" :rate.sync="rate"></canvases>
@@ -27,19 +30,22 @@
     <div class="imgs">
       <label>
         <input type="file" accept="image/*" @change="addSrc">
-        <div>add an image file</div>
+        <!-- <div>add an image file</div> -->
+        <div>{{ !mojibake ? 'add an image file' : randomStr(17) }}</div>
       </label>
       <img v-for="src in srces" :key="img" :src="src" @click="selectSrc(src)">
     </div>
 
     <div class="loading" v-show="loading">
-      <span>loading...</span>
+      <!-- <span>loading...</span> -->
+      <span>{{ !mojibake ? 'loading...' : randomStr(10) }}</span>
     </div>
 
   </div>
   <script src="./effects.js"></script>
   <script src="./index.js"></script>
   <script>
+    let negaposiCnt = 0
     document.querySelector('button').onclick = (e) => {
       // effects.reset()
       effects.stop()
@@ -48,7 +54,8 @@
       const detections = app.detections
       if (detections.length === 0) {
         alert(`could not detect any faces...\ntry another image !`)
-        effects.negaposi()
+        negaposiCnt === 0 ? effects.negaposi() : negaposiCnt === 3 ? effects.negaposi2() : null
+        negaposiCnt++
       } else {
         effects.bbb()
       }
@@ -61,9 +68,12 @@
           confirmFlg = true
           if(confirm(`とめちゃうの？`)) {
             await ((ms) => new Promise((resolve) => setTimeout(resolve, ms))) (1000)
-            confirm(`とめちゃゔゔゔゔゔのの？`)
+            // confirm(`とめちゃゔゔゔゔゔのの？`)
+            confirm(`${randomStr(8)}。\n${randomStr(16)}？`)
             effects.stop()
+            effects.white()
             effects.mask()
+            app.mojibake = true
             confirmFlg = false
           }
         } else {
