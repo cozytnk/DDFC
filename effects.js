@@ -8,8 +8,6 @@ const effects = {
     return { canvas, ctx }
   },
 
-  horrorfont: () => document.body.classList.add('horror-font'),
-
   // negaposi: () => document.body.classList.add('negaposi'),
   negaposi2: () => {
     setTimeout(() => {
